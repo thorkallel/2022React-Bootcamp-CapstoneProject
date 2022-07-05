@@ -1,5 +1,5 @@
-import { GlobalStyles } from './styles/global';
 import Navigation from './routes/Navigation';
+import { GlobalStyles } from './styles/global';
 
 function App() {
   return (

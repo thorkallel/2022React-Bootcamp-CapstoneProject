@@ -20,11 +20,16 @@
     "plugins": [
         "react",
         "react-hooks",
-        "prettier"
+        "prettier",
+        "simple-import-sort", "import"
     ],
     "rules": {
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "react/prop-types": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "react/jsx-props-no-spreading": 0
     }
 }

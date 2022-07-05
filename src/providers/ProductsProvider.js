@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useReducer, useEffect } from 'react';
-import reducer from '../reducers/products_reducer';
-import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
+import React, { useContext, useEffect, useReducer } from 'react';
 
 import {
   GET_PRODUCTS_BEGIN,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_ERROR
+  GET_PRODUCTS_ERROR,
+  GET_PRODUCTS_SUCCESS
 } from '../actions';
+import reducer from '../reducers/ProductsReducer';
+import { useApiRequest } from '../utils/hooks/useApiRequest';
 
 const initialState = {
   products_loading: false,
@@ -22,7 +22,7 @@ const ProductsContext = React.createContext();
 export function ProductsProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { data, isLoading } = useFeaturedBanners({
+  const { data, isLoading } = useApiRequest({
     typeData: 'product',
     size: 30
   });

@@ -10,6 +10,7 @@ export const Wrapper = styled.section`
   background-color: var(--clr-grey-10);
   padding: 3rem 1rem;
   border-radius: var(--radius);
+  margin: 0 auto;
 
   ul {
     display: flex;

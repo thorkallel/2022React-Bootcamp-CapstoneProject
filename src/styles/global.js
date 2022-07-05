@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 import { device } from './mediaquery';
 
 export const GlobalStyles = createGlobalStyle`
@@ -31,8 +32,8 @@ export const GlobalStyles = createGlobalStyle`
 		--clr-white: #fff;
 		--clr-black: #222;
 		--transition: all 0.3s linear;
-		--spacing: 0.1rem;
-		--radius: 0.25rem;
+		--spacing: -0.5px;
+		--radius: 0.5rem;
 		--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 		--dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 		--max-width: 1170px;
@@ -58,12 +59,11 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 	body {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-			Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		background: var(--clr-grey-1);
+		font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+		background: var(--clr-white);
 		color: var(--white);
 		line-height: 1.5;
-		font-size: 0.875rem;
+		font-size: 1rem;
 	}
 	ul {
 		list-style-type: none;
@@ -79,10 +79,15 @@ export const GlobalStyles = createGlobalStyle`
 	h3,
 	h4,
 	h5 {
+		font-family: 'Inter', 'Helvetica Neue', sans-serif;
 		letter-spacing: var(--spacing);
 		text-transform: capitalize;
 		line-height: 1.25;
 		margin-bottom: 0.75rem;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
 	}
 	h1 {
 		font-size: 2.5rem;
@@ -109,6 +114,9 @@ export const GlobalStyles = createGlobalStyle`
 	}
 	iframe {
 		display: none;
+	}
+	input, textarea {
+		font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
 	}
 	@media only screen and ${device.laptop} {
 		h1 {
@@ -141,8 +149,8 @@ export const GlobalStyles = createGlobalStyle`
 	a {
 		&.btn {
 			display: block;
-			width: 148px;
-			margin: 2rem auto;
+			width: 50%;
+			margin: .5rem auto;
 			text-align: center;
 			text-transform: uppercase;
 			background: var(--clr-primary-5);
@@ -154,9 +162,13 @@ export const GlobalStyles = createGlobalStyle`
 			font-size: 0.875rem;
 			cursor: pointer;
 			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-			border-radius: var(--radius);
+			border-radius: var(--radius) var(--radius) var(--radius) 0;
 			border-color: transparent;
 			cursor: pointer;
+
+			&.btn-page {
+				margin: 5rem auto;
+			}
 		}
 	}
 
@@ -181,6 +193,66 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	/* section */
+	.section {
+		padding: 5rem 0;
+	}
+	.section-center {
+		width: 90vw;
+		margin: 0 auto;
+		max-width: var(--max-width);
+	}
+
+	@media screen and (min-width: 992px) {
+		.section-center {
+			width: 95vw;
+		}
+	}
+	.text-center {
+		text-align: center;
+	}
+
+	.btn {
+		text-transform: uppercase;
+		background: var(--clr-primary-5);
+		color: var(--clr-primary-10);
+		padding: 0.375rem 0.75rem;
+		letter-spacing: var(--spacing);
+		display: inline-block;
+		font-weight: 400;
+		transition: var(--transition);
+		font-size: 0.875rem;
+		cursor: pointer;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+		border-radius: var(--radius);
+		border-color: transparent;
+	}
+	.btn:hover {
+		color: var(--clr-primary-1);
+		background: var(--clr-primary-7);
+	}
+	.title {
+		text-align: center;
+	}
+	.title .underline {
+		width: 6rem;
+		height: 0.25rem;
+		background: #49a6e9;
+		background: var(--clr-primary-5);
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page-100 {
+		min-height: calc(80vh - 10rem);
+		padding: 5rem 0;
+	}
+	.page {
+		min-height: calc(70vh - (50vh + 10rem));
+	}
+	.empty {
+    h2 {
+      text-align: center;
+    }
+  }
 `;
 
 export default GlobalStyles;

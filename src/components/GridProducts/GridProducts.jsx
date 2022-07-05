@@ -1,6 +1,7 @@
-import { useFilterContext } from '../../context/filter_context';
+import { useFilterContext } from '../../providers/FilterProvider';
+// eslint-disable-next-line import/no-cycle
+import { Product } from '..';
 import { Wrapper } from './gridproducts.styled';
-import Product from '../Product/Product';
 
 function GridProducts() {
   /*  CONTEXT DESTRUCTURING */

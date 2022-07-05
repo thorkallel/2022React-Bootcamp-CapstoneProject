@@ -1,8 +1,14 @@
 import React from 'react';
-import { AllProducts } from '../components';
+
+import { AllProducts, PageTitle } from '../components';
 
 function ProductListPage() {
-  return <AllProducts />;
+  return (
+    <>
+      <PageTitle title="This Is The Product List Page" />
+      <AllProducts />
+    </>
+  );
 }
 
 export default ProductListPage;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { device } from '../../styles/mediaquery';
 
 export const Wrapper = styled.section`
@@ -10,7 +11,6 @@ export const Wrapper = styled.section`
   grid-template-columns: repeat(2, minmax(45%, auto));
   gap: 5px;
   margin: 0 auto;
-  background-color: var(--clr-grey-9);
   border-radius: var(--radius);
 
   img {

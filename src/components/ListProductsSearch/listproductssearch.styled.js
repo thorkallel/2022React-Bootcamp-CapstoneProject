@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../styles/mediaquery';
+
 export const Wrapper = styled.section`
   background-color: var(--clr-white);
   display: grid;
@@ -16,7 +18,7 @@ export const Wrapper = styled.section`
     gap: 4rem;
     margin-top: 2rem;
     margin: 0 auto;
-    padding: 0 0 5rem;
+    padding: 0;
     max-width: var(--max-width);
     align-items: center;
   }
@@ -42,7 +44,7 @@ export const Wrapper = styled.section`
     font-size: 0.875rem;
     padding: 0.25rem 0.5rem;
   }
-  @media (min-width: 992px) {
+  @media only screen and ${device.laptop} {
     .product-center {
       grid-template-columns: 1fr;
       align-items: flex-start;

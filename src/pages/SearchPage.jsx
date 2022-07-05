@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useFilterContext } from '../context/filter_context';
-import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
-import { ListProductsSearch } from '../components';
+
+import { ListProductsSearch, PageTitle } from '../components';
+import { useFilterContext } from '../providers/FilterProvider';
+import { useApiRequest } from '../utils/hooks/useApiRequest';
 
 function SearchPage() {
   /*  CONTEXT DESTRUCTURING */
@@ -11,7 +12,7 @@ function SearchPage() {
   // GET PARAMS OF THE ROUTER
   const { searchword } = useParams();
 
-  const { data, isLoading } = useFeaturedBanners({
+  const { data, isLoading } = useApiRequest({
     typeData: 'search',
     size: 20,
     search: searchword
@@ -32,7 +33,12 @@ function SearchPage() {
     };
   }, [isLoading]);
 
-  return <ListProductsSearch />;
+  return (
+    <>
+      <PageTitle title="Page Search" />
+      <ListProductsSearch />
+    </>
+  );
 }
 
 export default SearchPage;

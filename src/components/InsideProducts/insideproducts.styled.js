@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { device } from '../../styles/mediaquery';
 
 export const Wrapper = styled.section`
@@ -23,7 +24,7 @@ export const Wrapper = styled.section`
       display: grid;
       -ms-grid-columns: minmax(24%, auto) minmax(24%, auto) minmax(24%, auto)
         minmax(24%, auto);
-      grid-template-columns: repeat(4, minmax(24%, auto));
+      grid-template-columns: repeat(3, minmax(32%, auto));
       gap: 5px;
       margin: 0 auto 10px;
     }

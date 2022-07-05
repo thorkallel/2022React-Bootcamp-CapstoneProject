@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 import {
   GET_BANNERS_BEGIN,
-  GET_BANNERS_SUCCESS,
-  GET_BANNERS_ERROR
+  GET_BANNERS_ERROR,
+  GET_BANNERS_SUCCESS
 } from '../actions';
 
-const banners_reducer = (state, action) => {
+const bannersReducer = (state, action) => {
   if (action.type === GET_BANNERS_BEGIN) {
     return { ...state, banners_loading: true };
   }
@@ -24,4 +24,4 @@ const banners_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
-export default banners_reducer;
+export default bannersReducer;

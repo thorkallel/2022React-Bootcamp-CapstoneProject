@@ -1,8 +1,11 @@
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+import Carousel from 'react-multi-carousel';
+
+import { useBannersContext } from '../../providers/BannersProvider';
+// eslint-disable-next-line import/no-cycle
+import { SlidesItems } from '..';
 import { Wrapper } from './slider.styled';
-import { useBannersContext } from '../../context/banners_context';
-import ItemsSlides from '../ItemsSlides/ItemsSlides';
 
 /* CAROUSEL OPTIONS */
 const responsive = {
@@ -29,7 +32,7 @@ function Slider() {
 
   /* SLIDES MAPPING */
   const itemsSlider = featured.map((slide) => (
-    <ItemsSlides slide={slide} key={slide.id} />
+    <SlidesItems slide={slide} key={slide.id} />
   ));
 
   return (

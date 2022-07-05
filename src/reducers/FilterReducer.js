@@ -1,17 +1,18 @@
 /* eslint-disable camelcase */
 import {
+  CLEAR_FILTERS,
+  FILTER_PARAMS,
+  FILTER_PRODUCTS,
+  GET_SINGLE_PRODUCT_SUCCESS,
   LOAD_PRODUCTS,
   PASS_ACTIVE_CATEGORY,
-  CLEAR_FILTERS,
-  FILTER_PRODUCTS,
-  FILTER_PARAMS,
-  GET_SINGLE_PRODUCT_SUCCESS,
   SEARCH_FILTERS
 } from '../actions';
 
-const filter_reducer = (state, action) => {
+const filterReducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
     const gridProducts = action.payload;
+    /* Grid by 16 products */
     const filterGridProducts = gridProducts.slice(0, 16);
     const { param_active } = state;
 
@@ -71,12 +72,14 @@ const filter_reducer = (state, action) => {
     if (activecategory.length > 0) {
       return {
         ...state,
+        /* Grid by 12 products */
         filtered_products: tempProducts
       };
     }
     if (activecategory.length === 0) {
       return {
         ...state,
+        /* Grid by 12 products */
         filtered_products: all_products
       };
     }
@@ -102,7 +105,8 @@ const filter_reducer = (state, action) => {
         tags: singleProduct.results[0].data.category.tags,
         specs: singleProduct.results[0].data.specs,
         stock: singleProduct.results[0].data.stock,
-        mainimage: singleProduct.results[0].data.mainimage.url
+        mainimage: singleProduct.results[0].data.mainimage.url,
+        product: singleProduct.results[0]
       }
     };
   }
@@ -112,7 +116,8 @@ const filter_reducer = (state, action) => {
 
     return {
       ...state,
-      search_products: results
+      /* Grid by 20 products */
+      search_products: results.slice(0, 20)
     };
   }
   if (action.type === CLEAR_FILTERS) {
@@ -128,4 +133,4 @@ const filter_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
-export default filter_reducer;
+export default filterReducer;

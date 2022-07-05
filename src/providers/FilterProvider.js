@@ -1,15 +1,16 @@
-import React, { useEffect, useContext, useReducer } from 'react';
-import reducer from '../reducers/filter_reducer';
+import React, { useContext, useEffect, useReducer } from 'react';
+
 import {
+  CLEAR_FILTERS,
+  FILTER_PARAMS,
+  FILTER_PRODUCTS,
+  GET_SINGLE_PRODUCT_SUCCESS,
   LOAD_PRODUCTS,
   PASS_ACTIVE_CATEGORY,
-  CLEAR_FILTERS,
-  FILTER_PRODUCTS,
-  FILTER_PARAMS,
-  GET_SINGLE_PRODUCT_SUCCESS,
   SEARCH_FILTERS
 } from '../actions';
-import { useProductsContext } from './products_context';
+import reducer from '../reducers/FilterReducer';
+import { useProductsContext } from './ProductsProvider';
 
 const initialState = {
   all_products: [],
@@ -27,7 +28,8 @@ const initialState = {
     tags: [],
     specs: [],
     stock: null,
-    mainimage: null
+    mainimage: null,
+    product: []
   },
   filters: {
     activecategory: []

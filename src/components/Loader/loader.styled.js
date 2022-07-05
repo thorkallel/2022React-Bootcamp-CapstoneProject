@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-white);
+  height: 200px;
+  width: 100%;
   .half-circle-spinner,
   .half-circle-spinner * {
     box-sizing: border-box;
@@ -11,8 +17,8 @@ export const Wrapper = styled.div`
     height: 60px;
     border-radius: 100%;
     position: relative;
-    opacity: 0.3;
-    margin: 20vh 0;
+    opacity: 0.5;
+    margin: 0 auto;
   }
 
   .half-circle-spinner .circle {

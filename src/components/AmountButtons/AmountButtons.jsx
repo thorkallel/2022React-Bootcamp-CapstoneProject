@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import { FaMinus, FaPlus } from 'react-icons/fa';
+
 import { Wrapper } from './amountbuttons.styled';
 
 // eslint-disable-next-line react/prop-types
@@ -16,5 +18,11 @@ function AmountButtons({ increase, decrease, amount }) {
     </Wrapper>
   );
 }
+
+AmountButtons.propTypes = {
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
+  amount: PropTypes.number.isRequired
+};
 
 export default AmountButtons;

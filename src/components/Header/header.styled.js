@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+
 import { device } from '../../styles/mediaquery';
 
 export const Wrapper = styled.header`
-  height: 5rem;
+  height: auto;
+  min-height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: var(--clr-grey-9);
+  justify-content: space-between;
+  background-color: var(--white);
 
   .nav-center {
     display: flex;
@@ -27,11 +29,6 @@ export const Wrapper = styled.header`
     display: none;
   }
   @media only screen and ${device.laptop} {
-    .nav-center {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-    }
     .nav-header {
       a {
         cursor: pointer;

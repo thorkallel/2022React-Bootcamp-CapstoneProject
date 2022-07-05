@@ -1,7 +1,8 @@
-import { useCategoriesContext } from '../../context/categories_context';
-import { useFilterContext } from '../../context/filter_context';
+import { useCategoriesContext } from '../../providers/CategoriesProvider';
+import { useFilterContext } from '../../providers/FilterProvider';
+// eslint-disable-next-line import/no-cycle
+import { Category } from '..';
 import { Wrapper } from './aside.styled';
-import Category from '../Category/Category';
 
 function Aside() {
   /*  CONTEXT DESTRUCTURING */

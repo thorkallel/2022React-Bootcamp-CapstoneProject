@@ -10,7 +10,20 @@ export const Wrapper = styled.article`
   img {
     width: 100%;
     height: auto;
+    transition: var(--transition);
   }
+
+  &:hover {
+    img {
+      opacity: 0.5;
+    }
+
+    p {
+      opacity: 0.8;
+      background-color: var(--clr-grey-1);
+    }
+  }
+
   div {
     position: absolute;
     left: 0;
@@ -31,6 +44,7 @@ export const Wrapper = styled.article`
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      transition: var(--transition);
     }
   }
 `;
