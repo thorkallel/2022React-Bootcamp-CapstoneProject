@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { useFilterContext } from '../../context/filter_context';
+
 import logo from '../../assets/logo.svg';
+import { useFilterContext } from '../../providers/FilterProvider';
+// eslint-disable-next-line import/no-cycle
+import { CartButtons } from '..';
 import { Wrapper } from './header.styled';
-import CartButtons from '../CartButtons/CartButtons';
-import SearchInput from '../SearchInput/SearchInput';
 
 function Header() {
   /*  CONTEXT DESTRUCTURING */
@@ -22,7 +23,6 @@ function Header() {
             <img src={logo} alt="Company Brand" />
           </NavLink>
         </div>
-        <SearchInput />
         <CartButtons />
       </div>
     </Wrapper>

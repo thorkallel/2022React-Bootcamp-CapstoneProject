@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { useFilterContext } from '../../context/filter_context';
+
+import { useFilterContext } from '../../providers/FilterProvider';
 import { Wrapper } from './productimages.styled';
 
 function ProductImages() {

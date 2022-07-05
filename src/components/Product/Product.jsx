@@ -1,10 +1,12 @@
-import { useEffect, useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useFilterContext } from '../../context/filter_context';
-import { Wrapper } from './products.styled';
+
+import { useFilterContext } from '../../providers/FilterProvider';
 import { formatPrice } from '../../utils/helpers';
-import Loader from '../Loader/Loader';
+// eslint-disable-next-line import/no-cycle
+import { AddToCart, Loader } from '..';
+import { Wrapper } from './products.styled';
 
 function Product({ product }) {
   /*  CONTEXT DESTRUCTURING */
@@ -16,44 +18,22 @@ function Product({ product }) {
   const [loader, setLoader] = useState(true);
 
   /* STATE OF CURRENT CLASS */
-  const [currentClass, setCurrentClass] = useState(null);
+  const [currentClass] = useState(null);
 
   /* PRODUCT DESTRUCTURING */
   const {
     data: {
-      category: { id, slug },
-      mainimage: { url, alt },
+      category: { slug },
+      mainimage: {
+        url,
+        alt,
+        dimensions: { width, height }
+      },
       name,
-      price
+      price,
+      stock
     }
   } = product;
-
-  /* USE EFFECT HOOK TO MEMORIZE THE VALUE OF CATEGROY ID */
-  const cid = useMemo(() => id, [id]);
-
-  /* USE EFFECT HOOK TO SWITCH THE ACTIVE CLASS */
-  useEffect(() => {
-    let unmounted = false;
-
-    if (!unmounted) {
-      const switchStateClass = () => {
-        // eslint-disable-next-line no-nested-ternary
-        const getChangeClass = activecategory
-          ? activecategory.indexOf(cid) !== -1
-            ? 'active'
-            : null
-          : null;
-        setCurrentClass(getChangeClass);
-      };
-      if (activecategory !== undefined) {
-        switchStateClass();
-      }
-    }
-
-    return () => {
-      unmounted = true;
-    };
-  }, [activecategory, cid]);
 
   /* USE EFFECT HOOK TO LOAD */
   useEffect(() => {
@@ -81,16 +61,16 @@ function Product({ product }) {
       ) : (
         <>
           <div className="container">
-            <img src={url} alt={alt} />
+            <img src={url} alt={alt} width={width} height={height} />
           </div>
           <div className="details">
             <h5>{name}</h5>
+          </div>
+          <div className="details">
             <p>{slug}</p>
           </div>
           <div className="counter">{formatPrice(price)}</div>
-          <NavLink to="/cart" className="btn">
-            add to cart
-          </NavLink>
+          {stock > 0 && <AddToCart product={product} />}
           <NavLink to={`/product/${product.id}`} className="btn">
             details
           </NavLink>
@@ -101,8 +81,21 @@ function Product({ product }) {
 }
 
 Product.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  product: PropTypes.object.isRequired
+  product: PropTypes.shape({
+    alternate_languages: PropTypes.oneOfType([PropTypes.array]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    first_publication_date: PropTypes.string,
+    href: PropTypes.string,
+    id: PropTypes.string,
+    lang: PropTypes.string,
+    last_publication_date: PropTypes.string,
+    linked_documents: PropTypes.arrayOf(string),
+    slugs: PropTypes.arrayOf(string),
+    tags: PropTypes.arrayOf(string),
+    type: PropTypes.string,
+    uid: PropTypes.string,
+    URL: PropTypes.string
+  }).isRequired
 };
 
 export default Product;

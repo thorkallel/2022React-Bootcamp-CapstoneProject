@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../styles/mediaquery';
+
 export const Wrapper = styled.section`
   .main {
     height: 600px;
@@ -23,7 +25,7 @@ export const Wrapper = styled.section`
   .active {
     border: 2px solid var(--clr-primary-5);
   }
-  @media (max-width: 576px) {
+  @media only screen and ${device.tablet}) {
     .main {
       height: 300px;
     }
@@ -33,7 +35,7 @@ export const Wrapper = styled.section`
       }
     }
   }
-  @media (min-width: 992px) {
+  @media only screen and ${device.laptop} {
     .main {
       height: 500px;
     }

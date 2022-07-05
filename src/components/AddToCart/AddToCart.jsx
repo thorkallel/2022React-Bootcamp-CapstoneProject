@@ -1,10 +1,21 @@
+import PropTypes, { string } from 'prop-types';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import { useCartContext } from '../../providers/CartProvider';
 import AmountButtons from '../AmountButtons/AmountButtons';
 import { Wrapper } from './addtocart.styled';
 
-function AddToCart(stock) {
+function AddToCart({ product }) {
+  const { addToCart } = useCartContext();
+
   const [amount, setAmount] = useState(1);
+
+  /* PRODUCT DESTRUCTURING */
+  const {
+    data: { stock, sku },
+    id
+  } = product;
 
   const increase = () => {
     setAmount((oldAmount) => {
@@ -33,12 +44,34 @@ function AddToCart(stock) {
           increase={increase}
           decrease={decrease}
         />
-        <Link to="/cart" className="btn">
+        <NavLink
+          to="/cart"
+          className="btn"
+          onClick={() => addToCart(id, sku, amount, product)}
+        >
           add to cart
-        </Link>
+        </NavLink>
       </div>
     </Wrapper>
   );
 }
+
+AddToCart.propTypes = {
+  product: PropTypes.shape({
+    alternate_languages: PropTypes.oneOfType([PropTypes.array]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    first_publication_date: PropTypes.string,
+    href: PropTypes.string,
+    id: PropTypes.string,
+    lang: PropTypes.string,
+    last_publication_date: PropTypes.string,
+    linked_documents: PropTypes.arrayOf(string),
+    slugs: PropTypes.arrayOf(string),
+    tags: PropTypes.arrayOf(string),
+    type: PropTypes.string,
+    uid: PropTypes.string,
+    URL: PropTypes.string
+  }).isRequired
+};
 
 export default AddToCart;

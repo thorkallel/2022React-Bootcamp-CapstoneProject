@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
+import { useFilterContext } from '../../providers/FilterProvider';
 import { Wrapper } from './searchinput.styled';
 
 function SearchInput() {
-  const [wordSearch, setWordSearch] = useState();
+  /*  CONTEXT DESTRUCTURING */
+  const { clearFilters } = useFilterContext();
+
+  const [wordSearch, setWordSearch] = useState('Search');
 
   const updateState = (e) => {
     const textSearch = e.target.value;
@@ -12,12 +17,13 @@ function SearchInput() {
     setWordSearch(textSearch);
   };
 
+  // GET PARAMS OF THE ROUTER
   const history = useNavigate();
 
   // Search dispatch
   const onSubmitSearch = (e) => {
     e.preventDefault();
-
+    clearFilters();
     history(`/search/${wordSearch}`);
   };
 
@@ -25,12 +31,7 @@ function SearchInput() {
     <Wrapper>
       <div className="section-center">
         <div className="content">
-          <form
-            className="contact-form"
-            action="your form spree id"
-            method="POST"
-            onSubmit={onSubmitSearch}
-          >
+          <form className="search-form" value="id" onSubmit={onSubmitSearch}>
             <input
               type="text"
               className="form-input"

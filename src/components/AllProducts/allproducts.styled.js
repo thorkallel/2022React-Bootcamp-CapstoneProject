@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { device } from '../../styles/mediaquery';
 
 export const Wrapper = styled.article`
@@ -7,7 +8,6 @@ export const Wrapper = styled.article`
   flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
-  background-color: var(--clr-grey-1);
   max-width: var(--max-width);
 
   .products {
@@ -20,7 +20,8 @@ export const Wrapper = styled.article`
   @media only screen and ${device.laptop} {
     flex-direction: row;
     .products {
-      width: 80%;
+      width: calc(80% - 20px);
+      margin: 20px 0 0 20px;
       padding: 0 0 10px;
     }
   }

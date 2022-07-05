@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../styles/mediaquery';
+
 export const Wrapper = styled.main`
   background-color: var(--clr-white);
   .product-center {
@@ -40,7 +42,7 @@ export const Wrapper = styled.main`
     }
   }
 
-  @media (min-width: 992px) {
+  @media only screen and ${device.laptop} {
     .product-center {
       grid-template-columns: 1fr 1fr;
       align-items: flex-start;

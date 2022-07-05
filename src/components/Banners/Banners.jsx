@@ -1,8 +1,12 @@
-import Carousel from 'react-multi-carousel';
+/* eslint-disable import/no-cycle */
 import 'react-multi-carousel/lib/styles.css';
+
+import Carousel from 'react-multi-carousel';
+
+import { useCategoriesContext } from '../../providers/CategoriesProvider';
+// eslint-disable-next-line no-unused-vars
+import { BannersItems } from '..';
 import { Wrapper } from './banners.styled';
-import { useCategoriesContext } from '../../context/categories_context';
-import ItemsBanners from '../ItemsBanners/ItemsBanners';
 
 /* CAROUSEL OPTIONS */
 const responsive = {
@@ -29,7 +33,7 @@ function Banners() {
 
   /* SLIDES MAPPING */
   const bannerSlider = featured.map((banner) => (
-    <ItemsBanners slide={banner} key={banner.id} />
+    <BannersItems slide={banner} key={banner.id} />
   ));
 
   return (

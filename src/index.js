@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-import { BannersProvider } from './context/banners_context';
-import { CategoriesProvider } from './context/categories_context';
-import { ProductsProvider } from './context/products_context';
-import { FilterProvider } from './context/filter_context';
+import App from './App';
+import { BannersProvider } from './providers/BannersProvider';
+import { CartProvider } from './providers/CartProvider';
+import { CategoriesProvider } from './providers/CategoriesProvider';
+import { FilterProvider } from './providers/FilterProvider';
+import { ProductsProvider } from './providers/ProductsProvider';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.render(
       <CategoriesProvider>
         <ProductsProvider>
           <FilterProvider>
-            <App />
+            <CartProvider>
+              <App />
+            </CartProvider>
           </FilterProvider>
         </ProductsProvider>
       </CategoriesProvider>

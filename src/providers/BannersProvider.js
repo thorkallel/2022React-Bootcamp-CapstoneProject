@@ -1,12 +1,12 @@
-import React, { useContext, useReducer, useEffect } from 'react';
-import reducer from '../reducers/banners_reducer';
-import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
+import React, { useContext, useEffect, useReducer } from 'react';
 
 import {
   GET_BANNERS_BEGIN,
-  GET_BANNERS_SUCCESS,
-  GET_BANNERS_ERROR
+  GET_BANNERS_ERROR,
+  GET_BANNERS_SUCCESS
 } from '../actions';
+import reducer from '../reducers/BannersReducer';
+import { useApiRequest } from '../utils/hooks/useApiRequest';
 
 const initialState = {
   banners_loading: false,
@@ -21,7 +21,7 @@ const BannersContext = React.createContext();
 export function BannersProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { data, isLoading } = useFeaturedBanners({
+  const { data, isLoading } = useApiRequest({
     typeData: 'banner',
     size: 5
   });

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+
 import { device } from '../../styles/mediaquery';
 
 export const Wrapper = styled.aside`
   width: 100%;
-  background-color: var(--clr-grey-1);
   padding: 0 10px 10px;
 
   ul {
@@ -11,19 +11,19 @@ export const Wrapper = styled.aside`
 
     li {
       padding: 1.5rem 0 1rem 0.5rem;
-      border-bottom: solid var(--clr-grey-2);
+      border-bottom: solid var(--clr-grey-8);
       transition: var(--transition);
 
       &.active {
-        border-bottom: solid var(--clr-primary-5);
+        border-bottom: solid var(--clr-grey-2);
       }
     }
     li a {
       font-weight: bold;
-      color: var(--clr-white);
+      color: var(--clr-grey-2);
       cursor: pointer;
       transition: var(--transition);
-      opacity: 0.5;
+      opacity: 1;
 
       &.active {
         opacity: 1;

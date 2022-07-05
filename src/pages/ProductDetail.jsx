@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useFilterContext } from '../context/filter_context';
-import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
-import { SingleProduct } from '../components';
+
+import { PageTitle, SingleProduct } from '../components';
+import { useFilterContext } from '../providers/FilterProvider';
+import { useApiRequest } from '../utils/hooks/useApiRequest';
 
 function ProductDetail() {
   /*  CONTEXT DESTRUCTURING */
@@ -11,7 +12,7 @@ function ProductDetail() {
   // GET PARAMS OF THE ROUTER
   const { id } = useParams();
 
-  const { data, isLoading } = useFeaturedBanners({
+  const { data, isLoading } = useApiRequest({
     typeData: 'single',
     size: 1,
     product: id
@@ -31,7 +32,12 @@ function ProductDetail() {
     };
   }, [isLoading]);
 
-  return <SingleProduct />;
+  return (
+    <>
+      <PageTitle title="Product Detail" />
+      <SingleProduct />
+    </>
+  );
 }
 
 export default ProductDetail;

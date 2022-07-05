@@ -1,6 +1,7 @@
+import PropTypes, { string } from 'prop-types';
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useFilterContext } from '../../context/filter_context';
+
+import { useFilterContext } from '../../providers/FilterProvider';
 
 function Category({ category }) {
   /*  CONTEXT DESTRUCTURING */
@@ -12,8 +13,6 @@ function Category({ category }) {
 
   /* STATE OF CURRENT CLASS */
   const [currentClass, setCurrentClass] = useState(null);
-
-  /* console.log('categories', activecategory); */
 
   /* CATEGORIES DESTRUCTURING */
   const {
@@ -33,7 +32,6 @@ function Category({ category }) {
             ? 'active'
             : null
           : null;
-        console.log(getChangeClass);
         setCurrentClass(getChangeClass);
       };
       changeStateClass();
@@ -63,8 +61,21 @@ function Category({ category }) {
 }
 
 Category.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  category: PropTypes.object.isRequired
+  category: PropTypes.shape({
+    alternate_languages: PropTypes.oneOfType([PropTypes.array]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    first_publication_date: PropTypes.string,
+    href: PropTypes.string,
+    id: PropTypes.string,
+    lang: PropTypes.string,
+    last_publication_date: PropTypes.string,
+    linked_documents: PropTypes.arrayOf(string),
+    slugs: PropTypes.arrayOf(string),
+    tags: PropTypes.arrayOf(string),
+    type: PropTypes.string,
+    uid: PropTypes.string,
+    URL: PropTypes.string
+  }).isRequired
 };
 
 export default Category;

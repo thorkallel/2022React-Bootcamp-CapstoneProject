@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/prefer-default-export */
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { API_BASE_URL } from '../constants';
 
 const INITIAL_API_METADATA = { ref: null, isLoading: true };

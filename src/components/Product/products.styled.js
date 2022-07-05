@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   gap: 0;
   border-radius: var(--radius);
   transition: var(--transition);
+  box-shadow: var(--dark-shadow);
 
   .container {
     position: relative;
@@ -14,22 +15,19 @@ export const Wrapper = styled.div`
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-
-  &.active {
-    background: var(--clr-grey-9);
   }
 
   img {
     width: 100%;
+    height: 200px;
     display: block;
-    object-fit: cover;
+    object-fit: none;
     transition: var(--transition);
   }
 
   .container:hover img {
     opacity: 0.5;
+    object-fit: cover;
   }
 
   .details {

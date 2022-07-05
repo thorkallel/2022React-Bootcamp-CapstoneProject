@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 import {
   GET_PRODUCTS_BEGIN,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_ERROR
+  GET_PRODUCTS_ERROR,
+  GET_PRODUCTS_SUCCESS
 } from '../actions';
 
-const products_reducer = (state, action) => {
+const productsReducer = (state, action) => {
   if (action.type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true };
   }
@@ -24,4 +24,4 @@ const products_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
-export default products_reducer;
+export default productsReducer;

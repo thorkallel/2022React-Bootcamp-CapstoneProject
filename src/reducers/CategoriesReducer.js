@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 import {
   GET_CATEGORIES_BEGIN,
-  GET_CATEGORIES_SUCCESS,
-  GET_CATEGORIES_ERROR
+  GET_CATEGORIES_ERROR,
+  GET_CATEGORIES_SUCCESS
 } from '../actions';
 
-const categories_reducer = (state, action) => {
+const categoriesReducer = (state, action) => {
   if (action.type === GET_CATEGORIES_BEGIN) {
     return { ...state, categories_loading: true };
   }
@@ -24,4 +24,4 @@ const categories_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
-export default categories_reducer;
+export default categoriesReducer;

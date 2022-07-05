@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { Slider, Banners, GridProducts } from '../components';
+
+import { Banners, GridProducts, Slider } from '../components';
 
 function Home() {
   return (
@@ -10,7 +11,7 @@ function Home() {
       <hr />
       <GridProducts />
       <hr />
-      <NavLink to="/products/all" className="btn">
+      <NavLink to="/products/all" className="btn btn-page">
         View all products
       </NavLink>
     </section>

@@ -1,12 +1,12 @@
-import React, { useContext, useReducer, useEffect } from 'react';
-import reducer from '../reducers/categories_reducer';
-import { useFeaturedBanners } from '../utils/hooks/useFeaturedBanners';
+import React, { useContext, useEffect, useReducer } from 'react';
 
 import {
   GET_CATEGORIES_BEGIN,
-  GET_CATEGORIES_SUCCESS,
-  GET_CATEGORIES_ERROR
+  GET_CATEGORIES_ERROR,
+  GET_CATEGORIES_SUCCESS
 } from '../actions';
+import reducer from '../reducers/CategoriesReducer';
+import { useApiRequest } from '../utils/hooks/useApiRequest';
 
 const initialState = {
   categories_loading: false,
@@ -21,7 +21,7 @@ const CategoriesContext = React.createContext();
 export function CategoriesProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { data, isLoading } = useFeaturedBanners({
+  const { data, isLoading } = useApiRequest({
     typeData: 'category',
     size: 30
   });
